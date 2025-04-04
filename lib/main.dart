@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/search_bar.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'widgets/uncontained_layout_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +33,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<String> items = [
+    "Slide 1", "Slide 2", "Slide 3", "Slide 4", "Slide 5"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,13 +137,30 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
+          spacing: 40,
           children: [
+            // Search Bar
             CustomSearchBar( // Gunakan widget CustomSearchBar
               onItemSelected: (item) {
                 print('Item dipilih: $item');
               },
             ),
 
+            // Carousel
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 200,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                viewportFraction: 0.8,
+              ),
+              items: List.generate(items.length, (index) {
+                return UncontainedLayoutCard(
+                  index: index,
+                  label: items[index],
+                );
+              }),
+            ),
           ],
         ),
       ),
