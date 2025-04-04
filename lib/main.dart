@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/search_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -131,36 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(25.0),
         child: Column(
           children: [
-            SearchAnchor(
-              builder: (BuildContext context, SearchController controller) {
-                return SearchBar(
-                  backgroundColor: MaterialStateProperty.all(Color(0xFFFAFAFA)),
-                  controller: controller,
-                  padding: const WidgetStatePropertyAll<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 16.0),
-                  ),
-                  onTap: () {
-                    controller.openView();
-                  },
-                  onChanged: (_) {
-                    controller.openView();
-                  },
-                  leading: const Icon(Icons.search),
-                );
-              },
-              suggestionsBuilder: (BuildContext context,
-                  SearchController controller) {
-                return List<ListTile>.generate(5, (int index) {
-                  final String item = 'item $index';
-                  return ListTile(
-                    title: Text(item),
-                    onTap: () {
-                      setState(() {
-                        controller.closeView(item);
-                      });
-                    },
-                  );
-                });
+            CustomSearchBar( // Gunakan widget CustomSearchBar
+              onItemSelected: (item) {
+                print('Item dipilih: $item');
               },
             ),
 
