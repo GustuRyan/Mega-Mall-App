@@ -33,8 +33,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<String> items = [
-    "Slide 1", "Slide 2", "Slide 3", "Slide 4", "Slide 5"
+  final List<String> images = [
+    "assets/images/carousel_image1.png",
+    "assets/images/carousel_image2.png",
+    "assets/images/carousel_image3.png",
+    "assets/images/carousel_image4.png",
   ];
 
   @override
@@ -134,35 +137,52 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Column(
-          spacing: 40,
-          children: [
-            // Search Bar
-            CustomSearchBar( // Gunakan widget CustomSearchBar
+      body: Column(
+        spacing: 40,
+        children: [
+          // Search Bar
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
+            child: CustomSearchBar(
               onItemSelected: (item) {
                 print('Item dipilih: $item');
               },
             ),
+          ),
 
-            // Carousel
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 200,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                viewportFraction: 0.8,
-              ),
-              items: List.generate(items.length, (index) {
-                return UncontainedLayoutCard(
-                  index: index,
-                  label: items[index],
-                );
-              }),
+          // Carousel
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 180,
+              autoPlay: true,
+              viewportFraction: 0.88,
             ),
-          ],
-        ),
+            items: List.generate(images.length, (index) {
+              return UncontainedLayoutCard(
+                index: index,
+                label: images[index],
+                width: 380,
+              );
+            }),
+          ),
+          
+          // Heading
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Categories",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                ButtonTheme(child: Text("See All"))
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
