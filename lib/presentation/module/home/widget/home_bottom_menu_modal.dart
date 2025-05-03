@@ -36,7 +36,7 @@ class HomeBottomMenuModal extends GetResponsiveView<HomeController> {
                 maxChildSize: 0.9,
                 builder: (_, controller) {
                   return Padding(
-                    padding: EdgeInsets.all(paddingMd),
+                    padding: EdgeInsets.all(25),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
