@@ -17,7 +17,7 @@ class HomeAnnouncements extends GetResponsiveView<HomeController> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: colorButton,
+            color: Colors.blueAccent,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
