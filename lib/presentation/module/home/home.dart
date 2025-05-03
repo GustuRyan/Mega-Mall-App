@@ -29,7 +29,7 @@ class HomeScreen extends GetResponsiveView<HomeController> {
       onPopInvokedWithResult:
           (didPop, result) => controller.alertController.scaffoldMessengerAlert(
             context: context,
-            backgroundColor: colorError,
+            backgroundColor: Colors.red,
             textColor: colorWhite,
             title: "Tekan OK untuk menutup aplikasi",
             label: "OK",
